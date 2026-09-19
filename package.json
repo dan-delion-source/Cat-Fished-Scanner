@@ -1,0 +1,1 @@
+{"name":"nyae-biometric","version":"1.0.0","private":true,"type":"module","scripts":{"dev":"vite --host 0.0.0.0","build":"vite build","preview":"vite preview --host 0.0.0.0","test":"node --test tests/*.test.js"},"dependencies":{"@mediapipe/tasks-vision":"0.10.32","lucide":"^0.468.0","vite":"^7.1.0"},"devDependencies":{"@playwright/test":"^1.55.0"}}

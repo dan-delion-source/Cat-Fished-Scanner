@@ -1,0 +1,11 @@
+# NYAE / Human Interface Lab
+
+Run `npm install` then `npm run dev`. Open the displayed localhost URL. Camera access requires localhost or HTTPS. Run `npm run build` for the production bundle.
+
+For a production smoke test, run `npm run build` followed by `npm run preview -- --port 4173`. Deploy the generated `dist/` directory as a static site over HTTPS. Review [SECURITY.md](SECURITY.md) before publishing.
+
+Four scans are automatically captured after two seconds of stable alignment: full face, inward-tilted fists, overhead palms with fingers together, and overhead peace signs. Anatomical SVG guides show finger placement, palm creases, and the arm outline. MediaPipe pose and gesture models run locally; segmentation removes the background. The gesture classifier verifies Closed_Fist, Open_Palm, or Victory on both hands. Geometry checks add finger spacing, visible fingertips, and approximate inward wrist tilt. Only captured subject canvases remain in memory. Create Again clears the session and closes the camera. Model loading needs internet access to Google storage and jsDelivr.
+
+The labeled demo provides the entire sequence with an original illustrated subject, without camera access. The reveal composes a 12-second portrait canvas animation with original stickers and the user-supplied `assets/Nyae inchi.mp3`, beginning at 9 seconds. Audio settings on the result screen offer preview and an adjustable start offset; Apply & render generates an updated video. A shared Web Audio clock keeps the soundtrack and animated cuts together. Monitor muting does not remove the soundtrack from the export. MediaRecorder exports WebM or MP4 depending on browser support. Save Video becomes available when recording finishes. If MediaRecorder or canvas capture is unavailable, playback remains available but export is disabled.
+
+`npm test` checks gesture gating and the four-photo timeline. `tests/firefox-check.mjs` exercises the demo in installed Firefox through WebDriver BiDi on port 9222, with the preview on port 5174 (override with PREVIEW_URL). Actual camera accuracy depends on lighting, framing, and device performance and needs testing with physical users. Wrist tilt is a two-dimensional approximation, not a measurement of wrist flexion in depth. Vocal cue timing in `src/timeline.js` is authored rather than automatically transcribed from the track.
